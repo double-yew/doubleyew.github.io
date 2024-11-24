@@ -17,6 +17,11 @@
       margin: 0;
       padding: 0;
       color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Full viewport height */
+      flex-direction: column;
     }
     header {
       background-color: #007BFF;
@@ -40,6 +45,7 @@
     }
     .content {
       padding: 20px;
+      width: 100%;
     }
 
     /* New Grid Layout for Tiles */
@@ -48,6 +54,10 @@
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
       padding: 20px;
+      justify-items: center; /* Centers tiles horizontally */
+      width: 100%;
+      max-width: 1200px; /* Limit the width for larger screens */
+      margin-top: 20px;
     }
 
     .tile {
@@ -155,26 +165,26 @@
     <div class="tile-container">
       <div class="tile" onclick="openModal('javascript')">
         <h3>Getting Started</h3>
-        <p>Follow these steps to get started with the project...</p>
+        <p>Learn the fundamentals of JavaScript, including syntax, variables, and functions.</p>
         <a href="javascript-basics" class="tile-link">Read More</a>
       </div>
       <div class="tile" onclick="openModal('python')">
         <h3>API Reference</h3>
-        <p>Explore the API reference documentation here...</p>
+        <p>Start with Python programming and learn how to write simple scripts.</p>
         <a href="python-tutorials" class="tile-link">Read More</a>
       </div>
       <div class="tile" onclick="openModal('html-css')">
         <h3>Tutorials</h3>
-        <p>Learn through step-by-step tutorials for the project...</p>
+        <p>Understand the building blocks of web development: HTML and CSS.</p>
         <a href="html-css" class="tile-link">Read More</a>
       </div>
       <div class="tile" onclick="openModal('api')">
         <h3>FAQ</h3>
-        <p>Find answers to frequently asked questions...</p>
+        <p>Learn how to work with APIs, including making requests and handling responses.</p>
         <a href="api-integration" class="tile-link">Read More</a>
       </div>
     </div>
-  </div>
+
   <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
@@ -217,9 +227,4 @@
 
     window.onclick = event => {
       if (event.target === document.getElementById("modal")) {
-        document.getElementById("modal").style.display = "none";
-      }
-    };
-  </script>
-</body>
-</html>
+        document.getElementById("modal").style.display 
