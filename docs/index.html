@@ -41,6 +41,55 @@
     .content {
       padding: 20px;
     }
+
+    /* New Grid Layout for Tiles */
+    .tile-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .tile {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 200px;
+    }
+
+    .tile:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tile h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .tile p {
+      font-size: 1em;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .tile-link {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .tile-link:hover {
+      color: #0056b3;
+    }
+
     footer {
       text-align: center;
       background-color: #333;
@@ -49,6 +98,41 @@
       position: fixed;
       width: 100%;
       bottom: 0;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+    }
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      right: 15px;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -80,21 +164,86 @@
       <p>Explore the API reference documentation here...</p>
     </section>
     
-<section id="tutorials">
-  <h2>Tutorials</h2>
-  <p>Learn through <a href="tutorials.html">step-by-step tutorials</a> for the project...</p>
-</section>
+    <section id="tutorials">
+      <h2>Tutorials</h2>
+      <p>Learn through <a href="tutorials.html">step-by-step tutorials</a> for the project...</p>
+    </section>
     
     <section id="faq">
       <h2>FAQ</h2>
       <p>Find answers to frequently asked questions...</p>
     </section>
+
+    <!-- New Tile Section -->
+    <div class="tile-container">
+      <div class="tile" onclick="openModal('javascript')">
+        <h3>JavaScript Basics</h3>
+        <p>Learn the fundamentals of JavaScript, including syntax, variables, and functions.</p>
+        <a href="javascript-basics" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('python')">
+        <h3>Python Tutorials</h3>
+        <p>Start with Python programming and learn how to write simple scripts.</p>
+        <a href="python-tutorials" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('html-css')">
+        <h3>HTML & CSS</h3>
+        <p>Understand the building blocks of web development: HTML and CSS.</p>
+        <a href="html-css" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('api')">
+        <h3>API Integration</h3>
+        <p>Learn how to work with APIs, including making requests and handling responses.</p>
+        <a href="api-integration" class="tile-link">Read More</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-content"></p>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Double Yew! All rights reserved.</p>
   </footer>
-  
+
+  <!-- JavaScript -->
+  <script>
+    function openModal(topic) {
+      var modal = document.getElementById("modal"),
+          modalTitle = document.getElementById("modal-title"),
+          modalContent = document.getElementById("modal-content");
+
+      var content = {
+        'javascript': { title: "JavaScript Basics", content: "JavaScript is a versatile language used for both client-side and server-side development. Learn the basics, including syntax, variables, functions, and how to interact with the DOM." },
+        'python': { title: "Python Tutorials", content: "Python is an easy-to-learn programming language that emphasizes code readability. Start with simple scripts and build up to more complex applications." },
+        'html-css': { title: "HTML & CSS", content: "HTML and CSS are the foundational technologies for web development. Learn how to structure web pages and style them to create beautiful, responsive designs." },
+        'api': { title: "API Integration", content: "APIs allow applications to communicate with each other. Learn how to make requests to external services and handle responses to integrate APIs into your projects." }
+      };
+
+      if (content[topic]) {
+          modalTitle.innerHTML = content[topic].title;
+          modalContent.innerHTML = content[topic].content;
+      }
+
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = event => {
+      if (event.target === document.getElementById("modal")) {
+        document.getElementById("modal").style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
