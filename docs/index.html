@@ -11,6 +11,19 @@
   
   <!-- Simple Styling -->
   <style>
+    /* Define a keyframe animation to smoothly transition background colors */
+    @keyframes dynamicBackground {
+      0% {
+        background-color: #007BFF; /* Start with blue */
+      }
+      50% {
+        background-color: #4CAF50; /* Midway, change to green */
+      }
+      100% {
+        background-color: #FF5722; /* End with an orange */
+      }
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f7fa;
@@ -20,29 +33,35 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* Full viewport height */
+      min-height: 100vh;
       flex-direction: column;
+      animation: dynamicBackground 10s ease infinite; /* Apply animation */
     }
+
     header {
-      background-color: #007BFF;
       color: white;
       padding: 1em;
       text-align: center;
+      transition: background-color 0.3s ease;
     }
+
     nav {
       background-color: #333;
       padding: 0.5em;
       text-align: center;
     }
+
     nav a {
       color: white;
       padding: 0.5em 1em;
       text-decoration: none;
       margin: 0 10px;
     }
+
     nav a:hover {
       background-color: #555;
     }
+
     .content {
       padding: 20px;
       width: 100%;
@@ -54,9 +73,9 @@
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
       padding: 20px;
-      justify-items: center; /* Centers tiles horizontally */
+      justify-items: center;
       width: 100%;
-      max-width: 1200px; /* Limit the width for larger screens */
+      max-width: 1200px;
       margin-top: 20px;
     }
 
@@ -149,7 +168,7 @@
 <body>
   
   <!-- Header Section -->
-  <header>
+  <header id="header">
     <h1>Double Yew! Sandbox</h1>
     <p>Play with Text, Play with Code</p>
   </header>
@@ -161,29 +180,30 @@
     <a href="#tutorials">Tutorials</a>
     <a href="#faq">FAQ</a>
   </nav>
-    <!-- New Tile Section -->
-    <div class="tile-container">
-      <div class="tile" onclick="openModal('javascript')">
-        <h3>Getting Started</h3>
-        <p>Learn the fundamentals of JavaScript, including syntax, variables, and functions.</p>
-        <a href="javascript-basics" class="tile-link">Read More</a>
-      </div>
-      <div class="tile" onclick="openModal('python')">
-        <h3>API Reference</h3>
-        <p>Start with Python programming and learn how to write simple scripts.</p>
-        <a href="python-tutorials" class="tile-link">Read More</a>
-      </div>
-      <div class="tile" onclick="openModal('html-css')">
-        <h3>Tutorials</h3>
-        <p>Understand the building blocks of web development: HTML and CSS.</p>
-        <a href="html-css" class="tile-link">Read More</a>
-      </div>
-      <div class="tile" onclick="openModal('api')">
-        <h3>FAQ</h3>
-        <p>Learn how to work with APIs, including making requests and handling responses.</p>
-        <a href="api-integration" class="tile-link">Read More</a>
-      </div>
+  
+  <!-- Tile Section -->
+  <div class="tile-container">
+    <div class="tile" onclick="openModal('javascript')">
+      <h3>Getting Started</h3>
+      <p>Learn the fundamentals of JavaScript, including syntax, variables, and functions.</p>
+      <a href="javascript-basics" class="tile-link">Read More</a>
     </div>
+    <div class="tile" onclick="openModal('python')">
+      <h3>API Reference</h3>
+      <p>Start with Python programming and learn how to write simple scripts.</p>
+      <a href="python-tutorials" class="tile-link">Read More</a>
+    </div>
+    <div class="tile" onclick="openModal('html-css')">
+      <h3>Tutorials</h3>
+      <p>Understand the building blocks of web development: HTML and CSS.</p>
+      <a href="html-css" class="tile-link">Read More</a>
+    </div>
+    <div class="tile" onclick="openModal('api')">
+      <h3>FAQ</h3>
+      <p>Learn how to work with APIs, including making requests and handling responses.</p>
+      <a href="api-integration" class="tile-link">Read More</a>
+    </div>
+  </div>
 
   <!-- Modal -->
   <div id="modal" class="modal">
@@ -227,4 +247,15 @@
 
     window.onclick = event => {
       if (event.target === document.getElementById("modal")) {
-        document.getElementById("modal").style.display 
+        document.getElementById("modal").style.display = "none";
+      }
+    };
+
+    // Random color change on click for header
+    document.getElementById('header').addEventListener('click', function() {
+      const colors = ['#007BFF', '#2196F3', '#00BCD4', '#4CAF50', '#FF5722'];
+      document.getElementById('header').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    });
+  </script>
+</body>
+</html>
