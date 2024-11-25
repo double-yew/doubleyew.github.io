@@ -3,78 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="API Integration - A DITA Concept Topic">
-  <title>API Integration - Concept</title>
+  <meta name="description" content="Documentation Site for Your Project">
+  <title>Double Yew!</title>
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   
   <!-- Simple Styling -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f7fa;
+    /* Basic Reset */
+    * {
       margin: 0;
       padding: 0;
-      color: #333;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
-      flex-direction: column;
+      background-color: #f4f7fa;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .tree-menu {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .tree-menu li {
+      margin: 5px 0;
+    }
+
+    .tree-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 10px;
+      display: block;
+      background-color: #444;
+      border-radius: 4px;
+    }
+
+    .tree-menu a:hover {
+      background-color: #555;
+    }
+
+    .tree-menu .submenu {
+      list-style: none;
+      padding-left: 20px;
+      display: none;
+    }
+
+    .tree-menu .submenu li {
+      margin: 5px 0;
+    }
+
+    .tree-menu .submenu a {
+      background-color: #555;
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: 100%;
     }
 
     header {
       color: white;
-      background-color: #008080;
       padding: 1em;
       text-align: center;
-    }
-
-    nav {
-      background-color: #333;
-      padding: 0.5em;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      padding: 0.5em 1em;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    nav a:hover {
-      background-color: #555;
-    }
-
-    .content {
-      padding: 20px;
-      width: 100%;
-      max-width: 1200px;
-      margin-top: 20px;
-    }
-
-    .concept-section {
-      background-color: #fff;
-      border: 1px solid #ddd;
+      background-color: #2196F3;
       border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
     }
 
-    .concept-section h2 {
-      color: #008080;
-      font-size: 2em;
-      margin-bottom: 15px;
+    .tile-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+      width: 100%;
+      max-width: 1200px;
     }
 
-    .concept-section p {
-      font-size: 1.2em;
-      margin-bottom: 15px;
+    .tile {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 200px;
     }
 
+    .tile:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tile h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .tile p {
+      font-size: 1em;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .tile-link {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .tile-link:hover {
+      color: #0056b3;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       background-color: #333;
@@ -88,25 +160,119 @@
 </head>
 <body>
   
-  <!-- Header Section -->
-  <header id="header">
-    <h1>API Reference</h1>
-    <p>Learn about the powerful capabilities of APIs.</p>
-  </header>
+  <!-- Sidebar with Tree Menu -->
+  <div class="sidebar">
+    <h2>Documentation Menu</h2>
+    <ul class="tree-menu">
+      <li>
+        <a href="#" onclick="toggleSubmenu('gettingStarted')">Getting Started</a>
+        <ul id="gettingStarted" class="submenu">
+          <li><a href="javascript-basics">JavaScript Basics</a></li>
+          <li><a href="html-css">HTML & CSS Basics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('apiReference')">API Reference</a>
+        <ul id="apiReference" class="submenu">
+          <li><a href="api-basics.html">API Basics</a></li>
+          <li><a href="api-integration">API Integration</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('tutorials')">Tutorials</a>
+        <ul id="tutorials" class="submenu">
+          <li><a href="python-tutorials">Python Tutorials</a></li>
+          <li><a href="advanced-techniques">Advanced Techniques</a></li>
+        </ul>
+      </li>
+      <li><a href="faq">FAQ</a></li>
+    </ul>
+  </div>
   
-  <!-- Content Section -->
+  <!-- Content Area -->
   <div class="content">
-    <div class="concept-section">
-      <h2>API Overview</h2>
-      <p>Software applications use various technologies to deliver the experiences you interact with. The client side, or front end where you fill out a form, handles what you see. The server side, or back end, manages the behind-the-scenes storage, processing, and retrieval of data.</p>
-      <p>Application Programming Interfaces (APIs) bridge these two sides and enable data to flow smoothly between them. When you submit data on the client side, like clicking Submit on a form, the API carries the data request to the server side and brings back the appropriate response.</p>
-      <p>Strict rules govern API request and responses to exchange data accurately and securely. This includes properly formatting the details of the request and entering the necessary permissions to gain access to the data, like knowing a secret handshake. Understanding the rules is key to effectively using APIs. Once you get them right, the API delivers the data you need to provide your application with powerful capabilities.</p>
+    <header>
+      <h1>Double Yew! Sandbox</h1>
+      <p>Play with Text, Play with Code</p>
+    </header>
+    
+    <!-- Tile Section -->
+    <div class="tile-container">
+      <div class="tile" onclick="openModal('javascript')">
+        <h3>Getting Started</h3>
+        <p>Learn the about your first steps on the site.</p>
+        <a href="javascript-basics" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('python')">
+        <h3>API Reference</h3>
+        <p>Find out how to effectively write about APIs.</p>
+        <a href="api-basics.html" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('html-css')">
+        <h3>Tutorials</h3>
+        <p>Follow step-by-step to accomplish what you want.</p>
+        <a href="html-css" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('api')">
+        <h3>FAQ</h3>
+        <p>Learn about answers to common questions.</p>
+        <a href="api-integration" class="tile-link">Read More</a>
+      </div>
     </div>
+    
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Double Yew! All rights reserved.</p>
+    </footer>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Double Yew! All rights reserved.</p>
-  </footer>
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-content"></p>
+    </div>
+  </div>
 
+  <!-- JavaScript -->
+  <script>
+    function openModal(topic) {
+      var modal = document.getElementById("modal"),
+          modalTitle = document.getElementById("modal-title"),
+          modalContent = document.getElementById("modal-content");
+
+      var content = {
+        'javascript': { title: "JavaScript Basics", content: "JavaScript is a versatile language used for both client-side and server-side development. Learn the basics, including syntax, variables, functions, and how to interact with the DOM." },
+        'python': { title: "Python Tutorials", content: "Python is an easy-to-learn programming language that emphasizes code readability. Start with simple scripts and build up to more complex applications." },
+        'html-css': { title: "HTML & CSS", content: "HTML and CSS are the foundational technologies for web development. Learn how to structure web pages and style them to create beautiful, responsive designs." },
+        'api': { title: "API Integration", content: "APIs allow applications to communicate with each other. Learn how to make requests to external services and handle responses to integrate APIs into your projects." }
+      };
+
+      if (content[topic]) {
+          modalTitle.innerHTML = content[topic].title;
+          modalContent.innerHTML = content[topic].content;
+      }
+
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = event => {
+      if (event.target === document.getElementById("modal")) {
+        document.getElementById("modal").style.display = "none";
+      }
+    };
+
+    // Toggle submenu visibility
+    function toggleSubmenu(menuId) {
+      const submenu = document.getElementById(menuId);
+      const isVisible = submenu.style.display === 'block';
+      submenu.style.display = isVisible ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
