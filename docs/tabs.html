@@ -4,58 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Documentation Site for Your Project">
-  <title>Double Yew!</title>
+  <title>Tabs - Double Yew!</title>
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   
   <!-- Link to external style.css -->
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
   
-  <!-- Sidebar from external sidebar.html -->
+  <!-- Sidebar -->
   <div class="sidebar">
-    <!-- We use PHP or JavaScript for including the sidebar -->
-    <div id="sidebar-container">
-      <!-- Example: Sidebar is loaded via JS -->
-    </div>
+    <h2>Navigation</h2>
+    <ul class="tree-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('gettingStarted')">Getting Started</a>
+        <ul id="gettingStarted" class="submenu">
+          <li><a href="tabs.html">Tabs</a></li>
+          <li><a href="html-css">HTML & CSS Basics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('apiReference')">API Reference</a>
+        <ul id="apiReference" class="submenu">
+          <li><a href="api-basics.html">API Basics</a></li>
+          <li><a href="api-integration">API Integration</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('tutorials')">Tutorials</a>
+        <ul id="tutorials" class="submenu">
+          <li><a href="python-tutorials">Python Tutorials</a></li>
+          <li><a href="advanced-techniques">Advanced Techniques</a></li>
+        </ul>
+      </li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
   </div>
   
   <!-- Content Area -->
   <div class="content">
     <header>
-      <h1>Double Yew! Sandbox</h1>
-      <p>Play with Text, Play with Code</p>
+      <h1>Tabs</h1>
+      <p>Learn about tabs and how to create them</p>
     </header>
-    
-    <!-- Tile Section -->
-    <div class="tile-container">
-      <div class="tile" onclick="openModal('tabs')">
-        <h3>Getting Started</h3>
-        <p>Learn about your first steps on the site.</p>
-        <a href="tabs.html" class="tile-link">Read More</a>
+
+    <!-- Tabs Section -->
+    <div class="tabs">
+      <ul class="tab-titles">
+        <li><a href="#tab1" class="active">Tab 1</a></li>
+        <li><a href="#tab2">Tab 2</a></li>
+        <li><a href="#tab3">Tab 3</a></li>
+      </ul>
+      
+      <div id="tab1" class="tab-content active">
+        <h3>Tab 1 Content</h3>
+        <p>This is the content for Tab 1.</p>
       </div>
-      <div class="tile" onclick="openModal('python')">
-        <h3>API Reference</h3>
-        <p>Find out how to effectively write about APIs.</p>
-        <a href="api-basics.html" class="tile-link">Read More</a>
+      <div id="tab2" class="tab-content">
+        <h3>Tab 2 Content</h3>
+        <p>This is the content for Tab 2.</p>
       </div>
-      <div class="tile" onclick="openModal('html-css')">
-        <h3>Tutorials</h3>
-        <p>Follow step-by-step to accomplish what you want.</p>
-        <a href="html-css" class="tile-link">Read More</a>
-      </div>
-      <div class="tile" onclick="openModal('api')">
-        <h3>FAQ</h3>
-        <p>Learn about answers to common questions.</p>
-        <a href="api-integration" class="tile-link">Read More</a>
+      <div id="tab3" class="tab-content">
+        <h3>Tab 3 Content</h3>
+        <p>This is the content for Tab 3.</p>
       </div>
     </div>
   </div>
-
-  <!-- Modal (Optional) -->
 
   <!-- JavaScript -->
   <script>
@@ -66,15 +83,24 @@
       submenu.style.display = isVisible ? 'none' : 'block';
     }
 
-    // Load Sidebar dynamically (using JS or PHP)
-    window.onload = function() {
-      fetch('sidebar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('sidebar-container').innerHTML = data;
-        })
-        .catch(err => console.error('Error loading sidebar:', err));
-    }
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.tab-titles a');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Hide all tabs and remove 'active' class from tab links
+        tabContents.forEach(content => content.classList.remove('active'));
+        tabs.forEach(link => link.classList.remove('active'));
+        
+        // Show the selected tab and activate its link
+        const target = document.querySelector(tab.getAttribute('href'));
+        target.classList.add('active');
+        tab.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
