@@ -25,11 +25,10 @@
     }
 
     header {
+      background-color: #007BFF;
       color: white;
-      background-color: #008080; /* Solid teal green background */
       padding: 1em;
       text-align: center;
-      transition: background-color 0.3s ease;
     }
 
     nav {
@@ -77,6 +76,7 @@
       flex-direction: column;
       justify-content: space-between;
       height: 200px;
+      width: 250px;
     }
 
     .tile:hover {
@@ -155,10 +155,18 @@
 <body>
   
   <!-- Header Section -->
-  <header id="header">
+  <header>
     <h1>Double Yew! Sandbox</h1>
     <p>Play with Text, Play with Code</p>
   </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#api-reference">API Reference</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#faq">FAQ</a>
+  </nav>
   
   <!-- Tile Section -->
   <div class="tile-container">
@@ -169,8 +177,8 @@
     </div>
     <div class="tile" onclick="openModal('python')">
       <h3>API Reference</h3>
-      <p>Find out how to effectively write about APIs.</p>
-      <a href="python-tutorials" class="tile-link">Read More</a>
+      <p>Learn the basics of working with APIs.</p>
+      <a href="api-basics.html" class="tile-link">Read More</a>
     </div>
     <div class="tile" onclick="openModal('html-css')">
       <h3>Tutorials</h3>
