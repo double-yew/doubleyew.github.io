@@ -14,13 +14,13 @@
     /* Define a keyframe animation to smoothly transition background colors */
     @keyframes dynamicBackground {
       0% {
-        background-color: #007BFF; /* Start with red */
+        background-color: #f50000; /* Start with red */
       }
       50% {
-        background-color: #4CAF50; /* Midway, change to black */
+        background-color: #000000; /* Midway, change to black */
       }
       100% {
-        background-color: #FF5722; /* End with an green */
+        background-color: #05ff60; /* End with an green */
       }
     }
 
@@ -245,7 +245,7 @@
 
     // Random color change on click for header
     document.getElementById('header').addEventListener('click', function() {
-      const colors = ['#007BFF', '#2196F3', '#00BCD4', '#4CAF50', '#FF5722'];
+      const colors = ['#f50000', '#2196F3', '#00BCD4', '#000000', '#05ff60'];
       document.getElementById('header').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     });
   </script>
