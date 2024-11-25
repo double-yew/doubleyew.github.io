@@ -9,13 +9,84 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   
-  <!-- Link to External CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Simple Styling -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    header {
+      color: white;
+      background-color: #008080;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 0.5em;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    .content {
+      padding: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+
+    .concept-section {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .concept-section h2 {
+      color: #008080;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .concept-section p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
 </head>
 <body>
-  
-  <!-- Include Sidebar (dynamically loaded via JavaScript) -->
-  <div id="sidebar"></div>
   
   <!-- Header Section -->
   <header id="header">
@@ -31,23 +102,6 @@
       <p>Application Programming Interfaces (APIs) bridge these two sides and enable data to flow smoothly between them. When you submit data on the client side, like clicking Submit on a form, the API carries the data request to the server side and brings back the appropriate response.</p>
       <p>Strict rules govern API request and responses to exchange data accurately and securely. This includes properly formatting the details of the request and entering the necessary permissions to gain access to the data, like knowing a secret handshake. Understanding the rules is key to effectively using APIs. Once you get them right, the API delivers the data you need to provide your application with powerful capabilities.</p>
     </div>
-  </div>
-  
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2024 Double Yew! Documentation</p>
-  </footer>
 
-  <!-- JavaScript to load Sidebar -->
-  <script>
-    // Load sidebar content dynamically from sidebar.html
-    document.addEventListener("DOMContentLoaded", function() {
-      fetch('sidebar.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('sidebar').innerHTML = data)
-        .catch(error => console.error('Error loading sidebar:', error));
-    });
-  </script>
-  
 </body>
 </html>
