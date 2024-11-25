@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +11,37 @@
   
   <!-- Link to external style.css -->
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
   
-  <!-- Sidebar from external sidebar.html -->
+  <!-- Sidebar -->
   <div class="sidebar">
-    <!-- We use PHP or JavaScript for including the sidebar -->
-    <div id="sidebar-container">
-      <!-- Example: Sidebar is loaded via JS -->
-    </div>
+    <h2>Navigation</h2>
+    <ul class="tree-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('gettingStarted')">Getting Started</a>
+        <ul id="gettingStarted" class="submenu">
+          <li><a href="tabs.html">Tabs</a></li>
+          <li><a href="html-css">HTML & CSS Basics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('apiReference')">API Reference</a>
+        <ul id="apiReference" class="submenu">
+          <li><a href="api-basics.html">API Basics</a></li>
+          <li><a href="api-integration">API Integration</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="toggleSubmenu('tutorials')">Tutorials</a>
+        <ul id="tutorials" class="submenu">
+          <li><a href="python-tutorials">Python Tutorials</a></li>
+          <li><a href="advanced-techniques">Advanced Techniques</a></li>
+        </ul>
+      </li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
   </div>
   
   <!-- Content Area -->
@@ -67,15 +87,15 @@
       submenu.style.display = isVisible ? 'none' : 'block';
     }
 
-    // Load Sidebar dynamically (using JS or PHP)
-    window.onload = function() {
-      fetch('sidebar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('sidebar-container').innerHTML = data;
-        })
-        .catch(err => console.error('Error loading sidebar:', err));
-    }
+    // Optionally, you can use this script to load the sidebar dynamically (if needed)
+    // window.onload = function() {
+    //   fetch('sidebar.html')
+    //     .then(response => response.text())
+    //     .then(data => {
+    //       document.getElementById('sidebar-container').innerHTML = data;
+    //     })
+    //     .catch(err => console.error('Error loading sidebar:', err));
+    // }
   </script>
 </body>
 </html>
