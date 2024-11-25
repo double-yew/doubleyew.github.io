@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HTML Concept Topic with Tabs">
     <title>HTML Concept Topic</title>
-    
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Optionally link to external sidebar if needed -->
-    <link rel="import" href="sidebar.html"> <!-- if using HTML imports -->
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -112,4 +105,34 @@
     &lt;title&gt;My First Web Page&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Welcome to HTM
+    &lt;h1&gt;Welcome to HTML!&lt;/h1&gt;
+    &lt;p&gt;This is a simple HTML document.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+    </div>
+
+    <!-- JavaScript for Tabs -->
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            let tabContent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+
+            // Remove active class from all tabs
+            let tabLinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+
+            // Show the current tab and set it to active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
