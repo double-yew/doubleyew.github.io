@@ -1,93 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HTML Concept Topic with Tabs">
-    <title>HTML Concept Topic</title>
-    
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation Site for Your Project">
+  <title>Double Yew!</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <!-- Link to external style.css -->
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-
-    <!-- Include Sidebar (dynamically loaded via JavaScript) -->
-    <div id="sidebar"></div>
-    
-    <!-- Main Container -->
-    <div class="container">
-        <h1>Understanding HTML</h1>
-
-        <!-- Tabs -->
-        <div class="tab">
-            <button class="tablinks active" onclick="openTab(event, 'definition')">Definition</button>
-            <button class="tablinks" onclick="openTab(event, 'benefits')">Benefits</button>
-            <button class="tablinks" onclick="openTab(event, 'examples')">Examples</button>
-        </div>
-
-        <!-- Tab Content: Definition -->
-        <div id="definition" class="tab-content active">
-            <h2>What is HTML?</h2>
-            <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. It provides the structure for a webpage, allowing developers to organize content using elements such as headings, paragraphs, links, and images.</p>
-        </div>
-
-        <!-- Tab Content: Benefits -->
-        <div id="benefits" class="tab-content">
-            <h2>Benefits of HTML</h2>
-            <ul>
-                <li>Easy to learn and use.</li>
-                <li>Supported by all modern browsers.</li>
-                <li>Allows for semantic structure, improving accessibility.</li>
-                <li>Forms the foundation for web development, working seamlessly with CSS and JavaScript.</li>
-            </ul>
-        </div>
-
-        <!-- Tab Content: Examples -->
-        <div id="examples" class="tab-content">
-            <h2>HTML Example</h2>
-            <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My First Web Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome to HTML!&lt;/h1&gt;
-    &lt;p&gt;This is a simple HTML document.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-            </pre>
-        </div>
+  
+  <!-- Sidebar from external sidebar.html -->
+  <div class="sidebar">
+    <!-- We use PHP or JavaScript for including the sidebar -->
+    <div id="sidebar-container">
+      <!-- Example: Sidebar is loaded via JS -->
     </div>
+  </div>
+  
+  <!-- Content Area -->
+  <div class="content">
+    <header>
+      <h1>Double Yew! Sandbox</h1>
+      <p>Play with Text, Play with Code</p>
+    </header>
+    
+    <!-- Tile Section -->
+    <div class="tile-container">
+      <div class="tile" onclick="openModal('tabs')">
+        <h3>Getting Started</h3>
+        <p>Learn about your first steps on the site.</p>
+        <a href="tabs.html" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('python')">
+        <h3>API Reference</h3>
+        <p>Find out how to effectively write about APIs.</p>
+        <a href="api-basics.html" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('html-css')">
+        <h3>Tutorials</h3>
+        <p>Follow step-by-step to accomplish what you want.</p>
+        <a href="html-css" class="tile-link">Read More</a>
+      </div>
+      <div class="tile" onclick="openModal('api')">
+        <h3>FAQ</h3>
+        <p>Learn about answers to common questions.</p>
+        <a href="api-integration" class="tile-link">Read More</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- JavaScript for Tabs -->
-    <script>
-        function openTab(evt, tabName) {
-            // Hide all tab contents
-            let tabContent = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
+  <!-- Modal (Optional) -->
 
-            // Remove active class from all tabs
-            let tabLinks = document.getElementsByClassName("tablinks");
-            for (let i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
+  <!-- JavaScript -->
+  <script>
+    // Toggle submenu visibility
+    function toggleSubmenu(menuId) {
+      const submenu = document.getElementById(menuId);
+      const isVisible = submenu.style.display === 'block';
+      submenu.style.display = isVisible ? 'none' : 'block';
+    }
 
-            // Show the current tab and set it to active
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        // Load sidebar content dynamically from sidebar.html
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('sidebar.html')
-                .then(response => response.text())
-                .then(data => document.getElementById('sidebar').innerHTML = data)
-                .catch(error => console.error('Error loading sidebar:', error));
-        });
-    </script>
-
+    // Load Sidebar dynamically (using JS or PHP)
+    window.onload = function() {
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('sidebar-container').innerHTML = data;
+        })
+        .catch(err => console.error('Error loading sidebar:', err));
+    }
+  </script>
 </body>
 </html>
