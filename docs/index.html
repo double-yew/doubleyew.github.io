@@ -9,20 +9,169 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   
-  <!-- Link to external style.css -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Simple Styling -->
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f7fa;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .tree-menu {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .tree-menu li {
+      margin: 5px 0;
+    }
+
+    .tree-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 10px;
+      display: block;
+      background-color: #444;
+      border-radius: 4px;
+    }
+
+    .tree-menu a:hover {
+      background-color: #555;
+    }
+
+    .tree-menu .submenu {
+      list-style: none;
+      padding-left: 20px;
+      display: none;
+    }
+
+    .tree-menu .submenu li {
+      margin: 5px 0;
+    }
+
+    .tree-menu .submenu a {
+      background-color: #555;
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    header {
+      color: white;
+      padding: 1em;
+      text-align: center;
+      background-color: #2196F3;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tile-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .tile {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 200px;
+    }
+
+    .tile:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tile h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .tile p {
+      font-size: 1em;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .tile-link {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .tile-link:hover {
+      color: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
 </head>
 <body>
   
-  <!-- Sidebar -->
+  <!-- Sidebar with Tree Menu -->
   <div class="sidebar">
     <h2>Navigation</h2>
     <ul class="tree-menu">
+      <!-- Home Tab -->
       <li><a href="index.html">Home</a></li>
+      
+      <!-- Other Menu Items -->
       <li>
         <a href="#" onclick="toggleSubmenu('gettingStarted')">Getting Started</a>
         <ul id="gettingStarted" class="submenu">
-          <li><a href="tabs.html">Tabs</a></li>
+          <li><a href="tabs.html">Tabs</a></li> <!-- Updated Tab Name and Link -->
           <li><a href="html-css">HTML & CSS Basics</a></li>
         </ul>
       </li>
@@ -40,7 +189,7 @@
           <li><a href="advanced-techniques">Advanced Techniques</a></li>
         </ul>
       </li>
-      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="faq">FAQ</a></li>
     </ul>
   </div>
   
@@ -56,7 +205,7 @@
       <div class="tile" onclick="openModal('tabs')">
         <h3>Getting Started</h3>
         <p>Learn about your first steps on the site.</p>
-        <a href="tabs.html" class="tile-link">Read More</a>
+        <a href="tabs.html" class="tile-link">Read More</a> <!-- Updated Link -->
       </div>
       <div class="tile" onclick="openModal('python')">
         <h3>API Reference</h3>
@@ -74,7 +223,6 @@
         <a href="api-integration" class="tile-link">Read More</a>
       </div>
     </div>
-  </div>
 
   <!-- Modal (Optional) -->
 
@@ -86,16 +234,6 @@
       const isVisible = submenu.style.display === 'block';
       submenu.style.display = isVisible ? 'none' : 'block';
     }
-
-    // Optionally, you can use this script to load the sidebar dynamically (if needed)
-    // window.onload = function() {
-    //   fetch('sidebar.html')
-    //     .then(response => response.text())
-    //     .then(data => {
-    //       document.getElementById('sidebar-container').innerHTML = data;
-    //     })
-    //     .catch(err => console.error('Error loading sidebar:', err));
-    // }
   </script>
 </body>
 </html>
