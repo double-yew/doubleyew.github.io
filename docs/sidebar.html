@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation Site for Your Project">
+  <title>Double Yew!</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Include Sidebar -->
+  <div id="sidebar-placeholder"></div>
+  
+  <!-- Content Area -->
+  <div class="content">
+    <header>
+      <h1>Double Yew! Sandbox</h1>
+      <p>Play with Text, Play with Code</p>
+    </header>
+    
+    <!-- Tile Section -->
+    <div class="tile-container">
+      <!-- Tile content here (unchanged) -->
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Load the sidebar from sidebar.html dynamically
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('sidebar-placeholder').innerHTML = data);
+    
+    // Toggle submenu visibility
+    function toggleSubmenu(menuId) {
+      const submenu = document.getElementById(menuId);
+      const isVisible = submenu.style.display === 'block';
+      submenu.style.display = isVisible ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
 
