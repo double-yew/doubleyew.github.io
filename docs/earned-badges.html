@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earned Badge with Local Storage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .badge-container {
+      margin: 20px;
+    }
+
+    .badge {
+      font-size: 50px;
+      display: none; /* Hidden by default */
+    }
+
+    .badge.show {
+      display: inline-block; /* Show badge when earned */
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .complete-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Documentation Section</h1>
+  <p>Complete this section to earn a badge!</p>
+  
+  <div class="badge-container">
+    <span class="badge" id="earnedBadge">🏆</span>
+  </div>
+
+  <button class="complete-button" onclick="earnBadge()">Complete Section</button>
+
+  <script>
+    // Function to handle earning the badge
+    function earnBadge() {
+      const badge = document.getElementById("earnedBadge");
+      badge.classList.add("show");
+      localStorage.setItem("badgeEarned", "true"); // Save badge status in localStorage
+    }
+
+    // Check localStorage on page load
+    window.onload = function() {
+      if (localStorage.getItem("badgeEarned") === "true") {
+        document.getElementById("earnedBadge").classList.add("show");
+      }
+    };
+  </script>
+
+</body>
+</html>
